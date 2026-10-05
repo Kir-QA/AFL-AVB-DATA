@@ -66,7 +66,7 @@ let markerSeen = false;
 const origLog = console.log;
 const quietLog = (...args) => {
     const s = args.map(a => String(a)).join(' ');
-    if (s.includes('v0.05.4 activated')) markerSeen = true;
+    if (s.includes('v0.05.6 activated')) markerSeen = true;
     if (s.includes('COURSON') || s.includes('[AVB]')) origLog.call(console, '  [script]', s.replace(/%c/g, '').slice(0, 150));
 };
 
