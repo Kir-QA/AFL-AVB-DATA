@@ -66,7 +66,7 @@ let markerSeen = false;
 const origLog = console.log;
 const quietLog = (...args) => {
     const s = args.map(a => String(a)).join(' ');
-    if (s.includes('v0.05.6 activated')) markerSeen = true;
+    if (s.includes('v0.05.12 activated')) markerSeen = true;
     if (s.includes('COURSON') || s.includes('[AVB]')) origLog.call(console, '  [script]', s.replace(/%c/g, '').slice(0, 150));
 };
 
@@ -173,7 +173,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     const dbg = wB.__COURSON_DEBUG__;
 
     console.log = origLog;
-    check('B1: консольный маркер v0.05.3 — скрипт запустился', markerSeen);
+    check('B1: консольный маркер v0.05.12 — скрипт запустился', markerSeen);
     check('B2: панель создана без исключений', !!wB.document.getElementById('courson-panel'));
     check(`B3: отмечено РОВНО ${CORRECT.length} варианта (факт: [${checkedIdx}])`, checkedIdx.length === CORRECT.length);
     check(`B4: отмечены ПРАВИЛЬНЫЕ варианты (индексы 0,1)`,
