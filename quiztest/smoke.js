@@ -62,12 +62,15 @@ const check = (name, cond) => {
     console.log(`${cond ? '✅' : '❌'} ${name}`);
 };
 
-let markerSeen = false;
+let markerSeen = '';
 const origLog = console.log;
 const quietLog = (...args) => {
     const s = args.map(a => String(a)).join(' ');
-    if (s.includes('v0.05.12 activated')) markerSeen = true;
-    if (s.includes('COURSON') || s.includes('[AVB]')) origLog.call(console, '  [script]', s.replace(/%c/g, '').slice(0, 150));
+    // Маркер версии-агностичен: любая vX.Y.Z — чтобы не править тест при каждом бампе.
+    const mm = s.match(/v(\d+\.\d+\.\d+)\s+activated/);
+    if (mm) markerSeen = mm[1];
+    if (s.includes('COURSON') || s.includes('[AVB]') || s.includes('AVB EDUCATION'))
+        origLog.call(console, '  [script]', s.replace(/%c/g, '').slice(0, 150));
 };
 
 // Запуск скрипта в изолированном jsdom-окне. seed — {ключ: значение} в sessionStorage.
@@ -173,7 +176,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     const dbg = wB.__COURSON_DEBUG__;
 
     console.log = origLog;
-    check('B1: консольный маркер v0.05.12 — скрипт запустился', markerSeen);
+    check(`B1: консольный маркер v${markerSeen} — скрипт запустился`, !!markerSeen);
     check('B2: панель создана без исключений', !!wB.document.getElementById('courson-panel'));
     check(`B3: отмечено РОВНО ${CORRECT.length} варианта (факт: [${checkedIdx}])`, checkedIdx.length === CORRECT.length);
     check(`B4: отмечены ПРАВИЛЬНЫЕ варианты (индексы 0,1)`,
