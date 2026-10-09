@@ -92,6 +92,7 @@ function bootPage(url, html, dbCode) {
     global.GM_getResourceText = undefined;
     global.GM_setValue = undefined;
     global.GM_getValue = undefined;
+    global.unsafeWindow = window; // userscript обращается к unsafeWindow напрямую (0.05.96+)
     global.GM_xmlhttpRequest = (opts) => setTimeout(() => {
         opts.onload({ status: 200, responseText: dbCode });
     }, 10);

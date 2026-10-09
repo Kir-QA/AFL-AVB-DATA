@@ -84,6 +84,7 @@ function boot(url, html, seed) {
     global.GM_xmlhttpRequest = undefined;
     global.GM_setValue = undefined;
     global.GM_getValue = undefined;
+    global.unsafeWindow = window; // userscript обращается к unsafeWindow напрямую (0.05.96+)
 
     delete require.cache[require.resolve('jquery')];
     const $ = require('jquery');

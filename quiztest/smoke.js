@@ -100,6 +100,7 @@ function boot(url, html, seed) {
     global.GM_xmlhttpRequest = undefined;
     global.GM_setValue = undefined;
     global.GM_getValue = undefined;
+    global.unsafeWindow = window; // userscript обращается к unsafeWindow напрямую (0.05.96+)
     // fetch → локальная копия БД из этого репозитория (без сети).
     const localFetch = () => Promise.resolve({
         ok: true,
