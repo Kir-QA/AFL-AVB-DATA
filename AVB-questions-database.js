@@ -1,6 +1,6 @@
 ﻿// База вопросов и ответов для скрипта COURSON TURBO
-// Версия: 1.7
-// Дата: 09.10.2026
+// Версия: 1.8
+// Дата: 10.10.2026
 // Кодировка: UTF-8
 // v1.0: 372 вопросов из PDF (Раздел 1, Опасные грузы, Конструкция ВС).
 // v1.1: корректировки с review.php (attempt=298061, 06.10.2026): +1 вопрос (литиевые батареи),
@@ -21,6 +21,9 @@
 
 // v1.4: авто-корректировки из review (attempt 2026-10-09): обновлено 27 записей, добавлено 17. Итого 386 вопросов.
 // v1.5: fileId для картиночных вопросов: 239213/215/216 (знаки запрещённых на PAX) и 239188 (инфекционные вещества).
+// v1.6: Task 14 image-match (4 картинки, subquestion IDs 2282-2285).
+// v1.7: (предыдущая сессия)
+// v1.8: Task 19 — cloze multianswer 12 глаголов (emergency announcement); фикс скрипта: select-matching для multianswer.
 //
 const AVB_QUESTIONS_DB = [
     [
@@ -1573,6 +1576,11 @@ const AVB_QUESTIONS_DB = [
 [
   ["Name the pictures in the correct order. Match each picture with its correct name.", null],
   ["2282 → a dragger smoke hood for crew", "2283 → a BCF halon fire extinguisher", "2284 → fire protective gloves", "2285 → a crash axe"]
+],
+// [CONFIRMED] Task 19 — cloze multianswer: emergency announcement verbs (12 blanks, positional)
+[
+  ["Read the announcement carefully and choose the correct verb from the dropdown list (a–l).", null],
+  ["are", "identify", "remain", "follow", "return", "fold up", "open", "put on", "remove", "cause", "stow", "leave"]
 ]
 ];
 
