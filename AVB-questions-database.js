@@ -1,5 +1,5 @@
 ﻿// База вопросов и ответов для скрипта COURSON TURBO
-// Версия: 1.6
+// Версия: 1.7
 // Дата: 09.10.2026
 // Кодировка: UTF-8
 // v1.0: 372 вопросов из PDF (Раздел 1, Опасные грузы, Конструкция ВС).
@@ -1568,7 +1568,12 @@ const AVB_QUESTIONS_DB = [
     [
         ["Этот знак наносится на упаковки с литиевыми батареями или натрий-ионными\nбатареями:",null],
         ["[img:239166]"]
-    ]
+    ],
+// [CONFIRMED] Task 14 — image match: subquestion IDs → correct names
+[
+  ["Name the pictures in the correct order. Match each picture with its correct name.", null],
+  ["2282 → a dragger smoke hood for crew", "2283 → a BCF halon fire extinguisher", "2284 → fire protective gloves", "2285 → a crash axe"]
+]
 ];
 
 // Экспорт для использования в других скриптах
